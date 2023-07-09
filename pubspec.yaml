@@ -1,0 +1,28 @@
+name: todo_getx_sqlite
+version: 1.0.0+1
+publish_to: none
+description: ToDo App with Getx and Sqlite
+environment: 
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.5
+  flutter_screenutil: 5.8.4
+  path_provider: 2.0.15
+  sqflite: 2.2.8+4
+  json_annotation: 4.8.1
+  path: 1.8.3
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  json_serializable: 6.7.1
+  build_runner: 2.4.6
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
