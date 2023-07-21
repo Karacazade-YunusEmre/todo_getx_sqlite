@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
-import '../../../model/concrete/duty_type.dart';
+import '../../../models/concrete/duty_type.dart';
 import '../controllers/duty_type_controller.dart';
 
 class DutyTypeView extends GetView<DutyTypeController> {

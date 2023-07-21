@@ -9,7 +9,7 @@ import '../../core/result/concrete/error_result.dart';
 import '../../core/result/concrete/success_data_result.dart';
 import '../../core/result/concrete/success_result.dart';
 import '../../data/consts/tables.dart';
-import '../../model/concrete/duty_type.dart';
+import '../../models/concrete/duty_type.dart';
 import '../abstract/i_duty_type_repository.dart';
 import 'helper/repository_helper.dart';
 
@@ -24,28 +24,30 @@ class DutyTypeRepository implements IDutyTypeRepository {
   }
 
   @override
-  Future<IDataResult<DutyType>> add(DutyType item) async {
+  Future<IResult> add(DutyType item) async {
     try {
       Database? db = await helper.getRepository();
 
       if (db == null) {
-        return ErrorDataResult<DutyType>();
+        /// Exception Handler
+        return ErrorResult();
       }
 
       final id = await db.insert(tableName, item.toJson());
 
       if (id == 0) {
-        return ErrorDataResult<DutyType>();
+        /// Exception Handler
+        return ErrorResult();
       }
 
-      item.id = id;
-      return SuccessDataResult<DutyType>(data: item);
+      return SuccessResult();
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
         print('An exception occurred in DutyTypeRepository on Add Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
-      return ErrorDataResult<DutyType>();
+      /// Exception Handler
+      return ErrorResult();
     }
   }
 
@@ -55,6 +57,7 @@ class DutyTypeRepository implements IDutyTypeRepository {
       Database? db = await helper.getRepository();
 
       if (db == null) {
+        /// Exception Handler
         return ErrorResult();
       }
 
@@ -65,14 +68,18 @@ class DutyTypeRepository implements IDutyTypeRepository {
       );
 
       if (id == 0) {
+        /// Exception Handler
         return ErrorResult();
       }
+
       return SuccessResult();
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
-        print('An exception occurred in DutyTypeRepository on Delete Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
+        print(
+            'An exception occurred in DutyTypeRepository on Delete Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
+      /// Exception Handler
       return ErrorResult();
     }
   }
@@ -83,7 +90,8 @@ class DutyTypeRepository implements IDutyTypeRepository {
       Database? db = await helper.getRepository();
 
       if (db == null) {
-        return ErrorDataResult<List<DutyType>?>();
+        /// Exception Handler
+        return ErrorDataResult();
       }
 
       List<Map<String, Object?>> maps = await db.query(
@@ -92,20 +100,21 @@ class DutyTypeRepository implements IDutyTypeRepository {
       );
 
       if (maps.isEmpty) {
-        return ErrorDataResult<List<DutyType>?>();
+        return ErrorDataResult();
       }
 
       List<DutyType> dutyList = List.generate(maps.length, (int index) {
         return DutyType.fromJson(maps[index]);
       }).toList();
 
-      return SuccessDataResult<List<DutyType>?>(data: dutyList);
+      return SuccessDataResult(data: dutyList);
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
         print('An exception occurred in DutyTypeRepository on GetAll. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
-      return ErrorDataResult<List<DutyType>?>();
+      /// Exception Handler
+      return ErrorDataResult();
     }
   }
 
@@ -115,6 +124,7 @@ class DutyTypeRepository implements IDutyTypeRepository {
       Database? db = await helper.getRepository();
 
       if (db == null) {
+        /// Exception Handler
         return ErrorResult();
       }
 
@@ -126,15 +136,18 @@ class DutyTypeRepository implements IDutyTypeRepository {
       );
 
       if (id == 0) {
+        /// Exception Handler
         return ErrorResult();
       }
 
       return SuccessResult();
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
-        print('An exception occurred in DutyTypeRepository on Update Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
+        print(
+            'An exception occurred in DutyTypeRepository on Update Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
+      /// Exception Handler
       return ErrorResult();
     }
   }

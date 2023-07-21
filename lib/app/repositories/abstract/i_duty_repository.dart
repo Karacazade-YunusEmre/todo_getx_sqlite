@@ -1,4 +1,4 @@
 import '../../core/repository/abstract/i_repository.dart';
-import '../../model/concrete/duty.dart';
+import '../../models/concrete/duty.dart';
 
 abstract class IDutyRepository implements IRepository<Duty> {}

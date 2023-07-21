@@ -34,7 +34,8 @@ class RepositoryHelper {
       return repository;
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
-        print('An Repository exception occurred: ${exception.toString()}, Stacktrace: ${stackTrace.toString()}');
+        print(
+            'An Repository exception occurred: ${exception.toString()}, Stacktrace: ${stackTrace.toString()}');
       }
 
       return null;

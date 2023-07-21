@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../model/concrete/duty_type.dart';
-import '../../../repository/abstract/i_duty_type_repository.dart';
+import '../../../models/concrete/duty_type.dart';
+import '../../../repositories/abstract/i_duty_type_repository.dart';
+
+
 
 class DutyTypeController extends GetxController {
   final dutyTypeList = RxList<DutyType>();
@@ -165,7 +167,7 @@ class DutyTypeController extends GetxController {
     );
     List<Widget> actions = [
       SizedBox(
-        width: 0.2.sw,
+        width: 0.15.sw,
         child: ElevatedButton(
           onPressed: () => Get.back(),
           style: ElevatedButton.styleFrom(
@@ -176,7 +178,7 @@ class DutyTypeController extends GetxController {
         ),
       ),
       SizedBox(
-        width: 0.2.sw,
+        width: 0.15.sw,
         child: ElevatedButton(
           onPressed: () async => await addDutyType(),
           style: ElevatedButton.styleFrom(

@@ -8,7 +8,7 @@ part of '../duty.dart';
 
 Duty _$DutyFromJson(Map<String, dynamic> json) => Duty(
       title: json['title'] as String,
-      done: json['done'] == 0 ? false : true,
+      done: json['done'] == 1 ? true : false,
       typeId: json['type_id'],
     )..id = json['id'] as int?;
 

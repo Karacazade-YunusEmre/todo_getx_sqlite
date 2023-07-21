@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../model/concrete/duty.dart';
-import '../../../repository/abstract/i_duty_repository.dart';
+import '../../../models/concrete/duty.dart';
+import '../../../repositories/abstract/i_duty_repository.dart';
 import 'duty_type_controller.dart';
 
 class HomeController extends GetxController {
@@ -88,10 +88,8 @@ class HomeController extends GetxController {
     final resultDutyType = await dutyRepository.getAll();
 
     if (resultDutyType.success) {
-      final dutyTypes = resultDutyType.data;
-
       dutyList.clear();
-      dutyList.addAll(dutyTypes!);
+      dutyList.addAll(resultDutyType.data!);
       dutyList.refresh();
     }
   }

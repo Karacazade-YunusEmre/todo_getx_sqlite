@@ -5,13 +5,15 @@ import 'package:get/get.dart';
 
 import '../../consts/messages.dart';
 
-class AppbarView extends GetView implements PreferredSizeWidget {
-  const AppbarView({Key? key}) : super(key: key);
+class AppBarView extends GetView implements PreferredSizeWidget {
+  const AppBarView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+
       title: const Text(Messages.appBarTitle),
+      centerTitle: true,
     );
   }
 

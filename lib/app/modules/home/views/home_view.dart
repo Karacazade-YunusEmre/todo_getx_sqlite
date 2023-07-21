@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarView(),
+      appBar: const AppBarView(),
       body: ListView(
         children: [
           ///region AddTodoForm
@@ -77,7 +77,9 @@ class HomeView extends GetView<HomeController> {
                     child: ListTile(
                       leading: Checkbox(
                         value: completed,
-                        onChanged: (bool? value) async => await controller.changeDutyComplete(currentDuty, value),
+                        onChanged: (bool? value) async {
+                          await controller.changeDutyComplete(currentDuty, value);
+                        },
                       ),
                       title: EditableText(
                         controller: TextEditingController(text: currentDuty.title),
@@ -85,11 +87,15 @@ class HomeView extends GetView<HomeController> {
                         style: Theme.of(context).textTheme.bodyLarge!,
                         cursorColor: Colors.black,
                         backgroundCursorColor: Colors.white,
-                        onSubmitted: (String value) => controller.updateDuty(value: value, currentDuty: currentDuty),
+                        onSubmitted: (String value) {
+                          // controller.updateDuty(value: value, currentDuty: currentDuty)
+                        },
                       ),
                       trailing: Icon(Icons.arrow_forward_ios, color: Colors.red, size: 18.sp),
                     ),
-                    onDismissed: (DismissDirection direction) async => await controller.removeDuty(currentDuty: currentDuty),
+                    onDismissed: (DismissDirection direction) async {
+                      // await controller.removeDuty(currentDuty: currentDuty)
+                    },
                   );
                 })),
           ),

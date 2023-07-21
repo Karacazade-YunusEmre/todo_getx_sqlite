@@ -9,7 +9,7 @@ import '../../core/result/concrete/error_result.dart';
 import '../../core/result/concrete/success_data_result.dart';
 import '../../core/result/concrete/success_result.dart';
 import '../../data/consts/tables.dart';
-import '../../model/concrete/duty.dart';
+import '../../models/concrete/duty.dart';
 import '../abstract/i_duty_repository.dart';
 import 'helper/repository_helper.dart';
 
@@ -24,28 +24,29 @@ class DutyRepository implements IDutyRepository {
   }
 
   @override
-  Future<IDataResult<Duty>> add(Duty item) async {
+  Future<IResult> add(Duty item) async {
     try {
       Database? db = await helper.getRepository();
 
       if (db == null) {
-        return ErrorDataResult<Duty>();
+        /// Exception Handler
+        return ErrorResult();
       }
 
-      final id = await db.insert(tableName, item.toJson());
-
+      int id = await db.insert(tableName, item.toJson());
       if (id == 0) {
-        return ErrorDataResult<Duty>();
+        /// Exception Handler
+        return ErrorResult();
       }
 
-      item.id = id;
-      return SuccessDataResult<Duty>(data: item);
+      return SuccessResult();
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
         print('An exception occurred in DutyRepository on Add Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
-      return ErrorDataResult<Duty>();
+      /// Exception Handler
+      return ErrorResult();
     }
   }
 
@@ -55,6 +56,7 @@ class DutyRepository implements IDutyRepository {
       Database? db = await helper.getRepository();
 
       if (db == null) {
+        /// Exception Handler
         return ErrorResult();
       }
 
@@ -65,14 +67,17 @@ class DutyRepository implements IDutyRepository {
       );
 
       if (id == 0) {
+        /// Exception Handler
         return ErrorResult();
       }
+
       return SuccessResult();
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
         print('An exception occurred in DutyRepository on Delete Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
+      /// Exception Handler
       return ErrorResult();
     }
   }
@@ -83,7 +88,8 @@ class DutyRepository implements IDutyRepository {
       Database? db = await helper.getRepository();
 
       if (db == null) {
-        return ErrorDataResult<List<Duty>?>();
+        /// Exception Handler
+        return ErrorDataResult();
       }
 
       List<Map<String, Object?>> maps = await db.query(
@@ -92,7 +98,7 @@ class DutyRepository implements IDutyRepository {
       );
 
       if (maps.isEmpty) {
-        return ErrorDataResult<List<Duty>?>();
+        return ErrorDataResult();
       }
 
       List<Duty> dutyList = List.generate(maps.length, (int index) {
@@ -105,7 +111,8 @@ class DutyRepository implements IDutyRepository {
         print('An exception occurred in DutyRepository on GetAll. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
-      return ErrorDataResult<List<Duty>?>();
+      /// Exception Handler
+      return ErrorDataResult();
     }
   }
 
@@ -115,6 +122,7 @@ class DutyRepository implements IDutyRepository {
       Database? db = await helper.getRepository();
 
       if (db == null) {
+        /// Exception Handler
         return ErrorResult();
       }
 
@@ -126,15 +134,16 @@ class DutyRepository implements IDutyRepository {
       );
 
       if (id == 0) {
+        /// Exception Handler
         return ErrorResult();
       }
-
       return SuccessResult();
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
         print('An exception occurred in DutyRepository on Update Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
+      /// Exception Handler
       return ErrorResult();
     }
   }
