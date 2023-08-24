@@ -8,16 +8,25 @@ import 'app/data/themes/app_theme.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
-  initDependencyManagement();
-  runApp(getMaterialApp());
+  setupDependencies();
+  runApp(const MainApp());
 }
 
-void initDependencyManagement() {
+void setupDependencies() {
   Get.put<GetXDependencyManagement>(GetXDependencyManagement());
 }
 
-Widget getMaterialApp() {
-  return ScreenUtilInit(
+class MainApp extends StatefulWidget {
+  const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
     designSize: const Size(360, 690),
     minTextAdapt: true,
     splitScreenMode: true,
@@ -31,4 +40,6 @@ Widget getMaterialApp() {
       );
     },
   );
+  }
 }
+

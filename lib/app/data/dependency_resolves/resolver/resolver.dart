@@ -6,7 +6,7 @@ import '../../../repositories/concrete/duty_repository.dart';
 import '../../../repositories/concrete/duty_type_repository.dart';
 import '../../../repositories/concrete/helper/repository_helper.dart';
 
-class GetXDependencyManagement extends GetxService {
+class Resolver extends GetxService {
   @override
   void onInit() {
     super.onInit();
