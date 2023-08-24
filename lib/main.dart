@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
-import 'app/data/dependency_resolves/Getx/getx_dependency_management.dart';
+import 'app/data/dependency_resolves/resolver.dart';
 import 'app/data/themes/app_theme.dart';
 import 'app/routes/app_pages.dart';
 
@@ -13,7 +13,7 @@ void main() {
 }
 
 void setupDependencies() {
-  Get.put<GetXDependencyManagement>(GetXDependencyManagement());
+  Get.put<Resolver>(Resolver());
 }
 
 class MainApp extends StatefulWidget {

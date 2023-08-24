@@ -4,10 +4,10 @@ import 'package:sqflite/sqflite.dart';
 
 import '../../core/result/abstract/i_data_result.dart';
 import '../../core/result/abstract/i_result.dart';
+import '../../core/result/concrete/error/error_result.dart';
 import '../../core/result/concrete/error_data_result.dart';
-import '../../core/result/concrete/error_result.dart';
-import '../../core/result/concrete/success_data_result.dart';
-import '../../core/result/concrete/success_result.dart';
+import '../../core/result/concrete/success/success_data_result.dart';
+import '../../core/result/concrete/success/success_result.dart';
 import '../../data/consts/tables.dart';
 import '../../models/concrete/duty_type.dart';
 import '../abstract/i_duty_type_repository.dart';
@@ -43,7 +43,8 @@ class DutyTypeRepository implements IDutyTypeRepository {
       return SuccessResult();
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
-        print('An exception occurred in DutyTypeRepository on Add Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
+        print(
+            'An exception occurred in DutyTypeRepository on Add Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
       /// Exception Handler
@@ -110,7 +111,8 @@ class DutyTypeRepository implements IDutyTypeRepository {
       return SuccessDataResult(data: dutyList);
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
-        print('An exception occurred in DutyTypeRepository on GetAll. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
+        print(
+            'An exception occurred in DutyTypeRepository on GetAll. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
       /// Exception Handler

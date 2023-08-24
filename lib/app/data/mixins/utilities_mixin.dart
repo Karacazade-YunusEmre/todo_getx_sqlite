@@ -30,7 +30,8 @@ mixin UtilitiesMixin {
     return filePath.path;
   }
 
-  Future<void> deleteExistsFile({required String filePath, bool? recursive}) async {
+  Future<void> deleteExistsFile(
+      {required String filePath, bool? recursive}) async {
     File existsFile = File(filePath);
 
     if (existsFile.existsSync()) {
@@ -38,7 +39,8 @@ mixin UtilitiesMixin {
     }
   }
 
-  Future<void> createAppDirectory({required String directoryPath, bool? recursive}) async {
+  Future<void> createAppDirectory(
+      {required String directoryPath, bool? recursive}) async {
     Directory directory = Directory(directoryPath);
 
     if (!directory.existsSync()) {

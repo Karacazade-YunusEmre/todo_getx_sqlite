@@ -1,4 +1,4 @@
-import '../abstract/i_data_result.dart';
+import '../../abstract/i_data_result.dart';
 
 class ErrorDataResult<T> implements IDataResult<T> {
   @override
@@ -11,6 +11,4 @@ class ErrorDataResult<T> implements IDataResult<T> {
   bool success = false;
 
   ErrorDataResult({this.data, this.message});
-
-  ErrorDataResult.onlyMessage({this.message});
 }

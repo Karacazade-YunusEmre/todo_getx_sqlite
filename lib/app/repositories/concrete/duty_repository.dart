@@ -4,10 +4,10 @@ import 'package:sqflite/sqflite.dart';
 
 import '../../core/result/abstract/i_data_result.dart';
 import '../../core/result/abstract/i_result.dart';
+import '../../core/result/concrete/error/error_result.dart';
 import '../../core/result/concrete/error_data_result.dart';
-import '../../core/result/concrete/error_result.dart';
-import '../../core/result/concrete/success_data_result.dart';
-import '../../core/result/concrete/success_result.dart';
+import '../../core/result/concrete/success/success_data_result.dart';
+import '../../core/result/concrete/success/success_result.dart';
 import '../../data/consts/tables.dart';
 import '../../models/concrete/duty.dart';
 import '../abstract/i_duty_repository.dart';
@@ -42,7 +42,8 @@ class DutyRepository implements IDutyRepository {
       return SuccessResult();
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
-        print('An exception occurred in DutyRepository on Add Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
+        print(
+            'An exception occurred in DutyRepository on Add Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
       /// Exception Handler
@@ -74,7 +75,8 @@ class DutyRepository implements IDutyRepository {
       return SuccessResult();
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
-        print('An exception occurred in DutyRepository on Delete Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
+        print(
+            'An exception occurred in DutyRepository on Delete Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
       /// Exception Handler
@@ -108,7 +110,8 @@ class DutyRepository implements IDutyRepository {
       return SuccessDataResult<List<Duty>?>(data: dutyList);
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
-        print('An exception occurred in DutyRepository on GetAll. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
+        print(
+            'An exception occurred in DutyRepository on GetAll. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
       /// Exception Handler
@@ -140,7 +143,8 @@ class DutyRepository implements IDutyRepository {
       return SuccessResult();
     } on Exception catch (exception, stackTrace) {
       if (kDebugMode) {
-        print('An exception occurred in DutyRepository on Update Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
+        print(
+            'An exception occurred in DutyRepository on Update Model. Exception: ${exception.toString()}, StackTrace: ${stackTrace.toString()}');
       }
 
       /// Exception Handler

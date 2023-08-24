@@ -1,4 +1,4 @@
-import '../abstract/i_result.dart';
+import '../../abstract/i_result.dart';
 
 class ErrorResult implements IResult {
   @override
